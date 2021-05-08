@@ -7,17 +7,22 @@ const movieSelect = document.getElementById('movie');
 // the + sign is to convert string to number
 let ticketPrice = +movieSelect.value;
 
+// save selected movie index and price
+function setMovieData(movieIndex, moviePrice) {
+    localStorage.setItem('selectedMovieIndex', movieIndex);
+    localStorage.setItem('selectedMoviePrice', moviePrice);
+}
+
 // Update total count
 function updateSelectedCount() {
     const selectedSeats = document.querySelectorAll('.row .seat.selected');
 
     // Copy selected seats into arr
-    const seatsIndex = [...selectedSeats].map(function(seat) {
-        return [...seats].indexOf(seat);
-    });
+    const seatsIndex = [...selectedSeats].map(seat => [...seats].indexOf(seat));
 
-
-    console.log(seatsIndex);
+    // storing local storage
+    localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
+   
     // Map through array
     // return a new array indexes
 
