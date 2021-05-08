@@ -5,7 +5,7 @@ const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
 
 // the + sign is to convert string to number
-const ticketPrice = +movieSelect.value;
+let ticketPrice = +movieSelect.value;
 
 // Update total count
 function updateSelectedCount() {
@@ -16,6 +16,14 @@ function updateSelectedCount() {
     total.innerText = selectedSeatsCount * ticketPrice;
 
 }
+
+// Movie Select Event
+movieSelect.addEventListener('change', e => {
+    ticketPrice = +e.target.value;
+    updateSelectedCount();
+})
+
+// Seat Click Event
 
 container.addEventListener('click', (e) => {
     if(e.target.classList.contains('seat') && !e.target.classList.contains('occupied')) {
